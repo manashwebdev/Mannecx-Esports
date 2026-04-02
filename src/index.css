@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-orbitron: "Orbitron", sans-serif;
+  --font-bebas: "Bebas Neue", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
+
+  --color-neon-red: #ff003c;
+  --color-neon-purple: #7b2cff;
+  --color-dark-bg: #0a0a0a;
+  --color-dark-card: #121212;
+
+  --shadow-neon-red: 0 0 15px rgba(255, 0, 60, 0.5);
+  --shadow-neon-purple: 0 0 15px rgba(123, 44, 255, 0.5);
+}
+
+@layer base {
+  body {
+    @apply bg-dark-bg text-white font-poppins selection:bg-neon-red selection:text-white;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-orbitron uppercase tracking-wider;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-xl;
+  }
+
+  .neon-border-red {
+    @apply border border-neon-red/30 hover:border-neon-red transition-colors duration-300;
+    box-shadow: 0 0 10px rgba(255, 0, 60, 0.1);
+  }
+
+  .neon-border-purple {
+    @apply border border-neon-purple/30 hover:border-neon-purple transition-colors duration-300;
+    box-shadow: 0 0 10px rgba(123, 44, 255, 0.1);
+  }
+
+  .btn-primary {
+    @apply relative px-8 py-3 bg-neon-red text-white font-bebas text-xl tracking-widest overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95;
+    box-shadow: 0 0 20px rgba(255, 0, 60, 0.3);
+  }
+
+  .btn-secondary {
+    @apply relative px-8 py-3 border-2 border-neon-purple text-white font-bebas text-xl tracking-widest overflow-hidden transition-all duration-300 hover:bg-neon-purple/10 hover:scale-105 active:scale-95;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-dark-bg;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-neon-red/50 rounded-full hover:bg-neon-red;
+}
+
+/* Cursor Glow Effect */
+.cursor-glow {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255, 0, 60, 0.05) 0%, transparent 70%);
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+}
